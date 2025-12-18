@@ -1,22 +1,26 @@
+version: '3.8'
+
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: workplace-postgres
+    container_name: workplace_db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-workplace_tasks}
-      POSTGRES_USER: ${POSTGRES_USER:-workplace}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-workplace}
+      POSTGRES_USER: bimworkplace
+      POSTGRES_PASSWORD: sEnha004
+      POSTGRES_DB: bimworkplace_db
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./.docker/postgres_data:/var/lib/postgresql/data
+    networks:
+      - workplace_network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
-      interval: 5s
-      timeout: 3s
-      retries: 20
+      test: [ "CMD-SHELL", "pg_isready -U reloflow_user" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-volumes:
-  postgres_data:
-
+networks:
+  workplace_network:
+    driver: bridge

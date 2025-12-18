@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "kVPrzm+CGjoxe62u3mKwGP9t42hZ+bwdPcFAmCRUS+U=",
+  "Source": "WorkplaceTasks.Api",
+  "BasePath": "_content/WorkplaceTasks.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

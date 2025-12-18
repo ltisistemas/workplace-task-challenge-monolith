@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+
+# IDE/OS
+.vscode
+.vs
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Env / secrets
+.env
+.env.*
+secrets/
+**/secrets/
+*.pfx
+*.snk
+
+# Docker artifacts
+docker-compose.override.yml
+
+# .NET / Visual Studio build outputs
+**/bin/
+**/obj/
+**/.vs/
+**/TestResults/
+**/*.user
+**/*.suo
+**/*.cache
+**/*.pdb
+
+# Node / Angular
+**/node_modules/
+**/dist/
+**/out/
+**/.angular/
+**/.nx/
+**/.cache/
+**/.npm/
+**/.yarn/
+**/.pnpm-store/
+**/coverage/
+**/.eslintcache
+
+# Docs / misc
+*.md
+*.pdf
