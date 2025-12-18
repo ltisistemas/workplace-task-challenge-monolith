@@ -1,0 +1,16 @@
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/bin/Debug/net8.0/WorkplaceTasks.Application.deps.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/bin/Debug/net8.0/WorkplaceTasks.Application.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/bin/Debug/net8.0/WorkplaceTasks.Application.pdb
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/bin/Debug/net8.0/WorkplaceTasks.Domain.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/bin/Debug/net8.0/WorkplaceTasks.Domain.pdb
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.csproj.AssemblyReference.cache
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.AssemblyInfoInputs.cache
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.AssemblyInfo.cs
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.csproj.CoreCompileInputs.cache
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.sourcelink.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.csproj.CopyComplete
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/refint/WorkplaceTasks.Application.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/WorkplaceTasks.Application.pdb
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/obj/Debug/net8.0/ref/WorkplaceTasks.Application.dll

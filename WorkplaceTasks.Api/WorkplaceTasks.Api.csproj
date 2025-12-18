@@ -22,4 +22,15 @@
     <Folder Include="Infrastructure/Persistence/" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="WorkplaceTasks.Application\WorkplaceTasks.Application.csproj" />
+    <ProjectReference Include="WorkplaceTasks.Infrastructure\WorkplaceTasks.Infrastructure.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="WorkplaceTasks.Domain\**\*.cs" />
+    <Compile Remove="WorkplaceTasks.Application\**\*.cs" />
+    <Compile Remove="WorkplaceTasks.Infrastructure\**\*.cs" />
+  </ItemGroup>
+
 </Project>

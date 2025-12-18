@@ -1,0 +1,12 @@
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/bin/Debug/net8.0/WorkplaceTasks.Domain.deps.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/bin/Debug/net8.0/WorkplaceTasks.Domain.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/bin/Debug/net8.0/WorkplaceTasks.Domain.pdb
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.AssemblyInfoInputs.cache
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.AssemblyInfo.cs
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.csproj.CoreCompileInputs.cache
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.sourcelink.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/refint/WorkplaceTasks.Domain.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/WorkplaceTasks.Domain.pdb
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Domain/obj/Debug/net8.0/ref/WorkplaceTasks.Domain.dll

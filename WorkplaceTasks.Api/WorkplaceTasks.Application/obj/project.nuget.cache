@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PJnQ+hgcsywkKLE0gOxYfH+50TEz1p065GOVla2QQJcNNFlt7t5X9fd7x9E0xJH6c2+JaPMutPqTggpiE0VX7g==",
+  "success": true,
+  "projectFilePath": "/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/WorkplaceTasks.Application/WorkplaceTasks.Application.csproj",
+  "expectedPackageFiles": [
+    "/home/luizltisistemas/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

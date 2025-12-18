@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkplaceTasks.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3edfa21c58035d29bacf8aaf7371ca9d1444cc87")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed201c32ce525ef55eac4b50c18087b5131b7012")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkplaceTasks.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkplaceTasks.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
