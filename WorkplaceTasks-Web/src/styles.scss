@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+  height: 100%; 
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body { 
+  margin: 0; 
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Dialog styles */
+.cdk-overlay-pane {
+  max-height: 90vh !important;
+}
+
+.nova-tarefa-dialog .mat-mdc-dialog-container {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.nova-tarefa-dialog .mat-mdc-dialog-content {
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}

@@ -10,7 +10,7 @@ public static class TaskEndpoints
 {
     public static IEndpointRouteBuilder MapTaskEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/tasks").WithTags("Tasks");
+        var group = app.MapGroup("/api/tasks").WithTags("Tasks").RequireAuthorization();
 
         // GET /tasks
         group.MapGet("/", async (ITaskService taskService, CancellationToken cancellationToken) =>
@@ -49,14 +49,13 @@ public static class TaskEndpoints
         .Produces<TaskResponse>(StatusCodes.Status200OK);
 
         // POST /tasks
-        group.MapPost("/", async (CreateTaskItemRequest request, ITaskService taskService, CancellationToken cancellationToken) =>
+        group.MapPost("/", async (CreateTaskItemRequest req, ITaskService taskService, CancellationToken cancellationToken, HttpContext httpContext) =>
         {
             try
             {
-                if (request.Title == null) return Results.BadRequest("Título da tarefa é obrigatório");
-                if (request.Description == null) return Results.BadRequest("Descrição da tarefa é obrigatório");
+                var userId = JwtHelper.GetUserId(httpContext);
                 
-                var task = await taskService.CreateAsync(request, cancellationToken);
+                var task = await taskService.CreateAsync(req, userId, cancellationToken);
                 return Results.Ok(task);
             }
             catch (System.Exception ex)
@@ -69,17 +68,13 @@ public static class TaskEndpoints
         .Produces<TaskResponse>(StatusCodes.Status201Created);
 
         // PUT /tasks/{id}
-        group.MapPut("/{id}", async (Guid id, UpdateTaskItemRequest request, ITaskService taskService, CancellationToken cancellationToken) =>
+        group.MapPut("/{id}", async (Guid id, UpdateTaskItemRequest request, ITaskService taskService, CancellationToken cancellationToken, HttpContext httpContext) =>
         {
             try
             {
-                if (id == Guid.Empty) return Results.BadRequest("Id da tarefa é obrigatório");
-                if (request.Title == null) return Results.BadRequest("Título da tarefa é obrigatório");
-                if (request.Description == null) return Results.BadRequest("Descrição da tarefa é obrigatório");
-                if (request.Status == null) return Results.BadRequest("Status da tarefa é obrigatório");
-
+                var userId = JwtHelper.GetUserId(httpContext);
                 request = request with { Id = id };
-                var task = await taskService.UpdateAsync(request, cancellationToken);
+                var task = await taskService.UpdateAsync(request, userId, cancellationToken);
                 if (task == null) return Results.NotFound("Tarefa não encontrada");
                 return Results.Ok(task);
             }
@@ -93,13 +88,12 @@ public static class TaskEndpoints
         .Produces<TaskResponse>(StatusCodes.Status200OK);
 
         // DELETE /tasks/{id}
-        group.MapDelete("/{id}", async (Guid id, ITaskService taskService, CancellationToken cancellationToken) =>
+        group.MapDelete("/", async (Guid taskId, Guid taskUserid, ITaskService taskService, CancellationToken cancellationToken, HttpContext httpContext) =>
         {
             try
             {
-                if (id == Guid.Empty) return Results.BadRequest("Id da tarefa é obrigatório");
-                var task = await taskService.DeleteAsync(id, cancellationToken);
-                if (task == null) return Results.NotFound("Tarefa não encontrada");
+                var userId = JwtHelper.GetUserId(httpContext);
+                var task = await taskService.DeleteAsync(new DeleteTaskItemRequest(taskId, taskUserid), userId, cancellationToken);
                 return Results.Ok(task);
             }
             catch (System.Exception ex)

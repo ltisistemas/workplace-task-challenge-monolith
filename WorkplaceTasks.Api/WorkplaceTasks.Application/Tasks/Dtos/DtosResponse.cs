@@ -3,19 +3,29 @@ using DomainTaskStatus = WorkplaceTasks.Domain.Entities.TaskStatus;
 
 namespace WorkplaceTasks.Application.Tasks.Dtos;
 
-public record CreateTaskItemRequest(String Title, String Description);
+public record CreateTaskItemRequest(
+    string Title, 
+    string Description
+);
 
 public record UpdateTaskItemRequest(
     Guid Id, 
-    String Title, 
-    String Description, 
-    DomainTaskStatus Status
+    string Title, 
+    string Description, 
+    DomainTaskStatus Status,
+    Guid TaskUserId
+);
+
+public record DeleteTaskItemRequest(
+    Guid TaskId,
+    Guid TaskUserId
 );
 
 public record TaskResponse(
     Guid Id,
-    String Title,
-    String Description,
+    Guid UserId,
+    string Title,
+    string Description,
     DomainTaskStatus Status,
     DateTime CreatedAt,
     DateTime UpdatedAt

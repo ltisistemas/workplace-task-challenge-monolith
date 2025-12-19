@@ -5,16 +5,15 @@ using WorkplaceTasks.Infrastructure.Persistence.Configurations;
 
 namespace WorkplaceTasks.Infrastructure.Persistence;
 
-public class AppDbContext : DbContext
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {}
-
     public DbSet<TaskItem> TaskItems => Set<TaskItem>();
-
+    public DbSet<UserTask> UserTasks => Set<UserTask>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new TaskItemConfiguration());
+        modelBuilder.ApplyConfiguration(new UserTaskConfiguration());
+        
         base.OnModelCreating(modelBuilder);
     }
 }

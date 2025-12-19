@@ -129,3 +129,15 @@
 /home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/WorkplaceTasks.Infrastructure/bin/Debug/net8.0/WorkplaceTasks.Infrastructure.deps.json
 /home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/WorkplaceTasks.Infrastructure/bin/Debug/net8.0/WorkplaceTasks.Infrastructure.runtimeconfig.json
 /home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/WorkplaceTasks.Infrastructure/obj/Debug/net8.0/WorkplaceTasks.Infrastructure.sourcelink.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/WorkplaceTasks.Application/obj/project.packagespec.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/WorkplaceTasks.Domain/obj/project.packagespec.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/WorkplaceTasks.Infrastructure/obj/project.packagespec.json
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/BCrypt.Net-Next.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/luizltisistemas/Documents/projetos/bim-workplace/WorkplaceTasks.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll

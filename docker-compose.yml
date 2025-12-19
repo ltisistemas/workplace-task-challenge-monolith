@@ -13,13 +13,43 @@ services:
       - "5432:5432"
     volumes:
       - ./.docker/postgres_data:/var/lib/postgresql/data
+      - ./.docker/scripts/seed-users.sql:/docker-entrypoint-initdb.d/seed-users.sql
+      # - ./.docker/scripts/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     networks:
       - workplace_network
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U reloflow_user" ]
+      test: [ "CMD-SHELL", "pg_isready -U bimworkplace" ]
       interval: 10s
       timeout: 5s
       retries: 5
+  # Novo serviço para executar o seed após o banco estar pronto
+  # db-seeder:
+  #   image: mcr.microsoft.com/dotnet/sdk:8.0
+  #   container_name: workplace_db_seeder
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   environment:
+  #     - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=bimworkplace_db;Username=bimworkplace;Password=sEnha004;Include Error Detail=true
+  #   volumes:
+  #     - ./WorkplaceTasks.Api:/app
+  #     - ./.docker/seed_flag:/seed_flag
+  #   working_dir: /app
+  #   command: >
+  #     sh -c "
+  #       if [ ! -f /seed_flag/.seed_completed ]; then
+  #         echo 'Executando seed de usuários...' &&
+  #         dotnet run --project WorkplaceTasks.Api.csproj --no-build -- seed &&
+  #         mkdir -p /seed_flag &&
+  #         touch /seed_flag/.seed_completed &&
+  #         echo 'Seed concluído!'
+  #       else
+  #         echo 'Seed já foi executado. Pulando...'
+  #       fi
+  #     "
+  #   networks:
+  #     - workplace_network
+  #   restart: "no"
 
 networks:
   workplace_network:

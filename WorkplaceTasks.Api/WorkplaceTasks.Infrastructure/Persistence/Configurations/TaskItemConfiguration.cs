@@ -17,6 +17,7 @@ public class TaskItemConfiguration : IEntityTypeConfiguration<TaskItem>
         builder.Property(t => t.Status).IsRequired();
         builder.Property(t => t.CreatedAt).IsRequired();
         builder.Property(t => t.UpdatedAt).IsRequired();
+        builder.Property(t => t.UserId).IsRequired();
 
         builder.HasIndex(x => x.Status);
         builder.HasIndex(x => x.CreatedAt);

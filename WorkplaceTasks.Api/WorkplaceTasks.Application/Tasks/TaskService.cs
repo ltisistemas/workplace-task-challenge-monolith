@@ -9,10 +9,12 @@ namespace WorkplaceTasks.Application.Tasks;
 public class TaskService : ITaskService
 {
     private readonly ITaskRepository _repository;
+    private readonly IUserTaskRepository _userTaskRepository;
 
-    public TaskService(ITaskRepository repository)
+    public TaskService(ITaskRepository repository, IUserTaskRepository userTaskRepository)
     {
         _repository = repository;
+        _userTaskRepository = userTaskRepository;
     }
 
     public async Task<TaskResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
@@ -25,10 +27,7 @@ public class TaskService : ITaskService
         }
         catch (System.Exception ex)
         {
-            // Check error from repository
-            if (ex.Message.Contains("[#TASKERROR001]")) throw new Exception(ex.Message, ex);
-
-            throw new Exception("[#TASKERROR006] Failed to get task by id", ex);
+            throw new Exception("[#TASKERROR001] Failed to get task by id", ex);
         }
     }
 
@@ -42,21 +41,22 @@ public class TaskService : ITaskService
         }
         catch (System.Exception ex)
         {
-            // Check error from repository
-            if (ex.Message.Contains("[#TASKERROR002]")) throw new Exception(ex.Message, ex);
-
-            throw new Exception("[#TASKERROR007] Failed to get all tasks", ex);
+            throw new Exception("[#TASKERROR002] Failed to get all tasks", ex);
         }
     }
 
-    public async Task<TaskResponse> CreateAsync(CreateTaskItemRequest request, CancellationToken cancellationToken = default)
+    public async Task<TaskResponse> CreateAsync(CreateTaskItemRequest request, Guid userId, CancellationToken cancellationToken = default)
     {
         try
         {
+            if (string.IsNullOrEmpty(request.Title)) throw new Exception("[#TASKERROR003] Title is required");
+            if (string.IsNullOrEmpty(request.Description)) throw new Exception("[#TASKERROR004] Description is required");
+
             var entity = new TaskItem
             {
                 Title = request.Title,
                 Description = request.Description,
+                UserId = userId,
             };
 
             var createdTask = await _repository.CreateAsync(entity, cancellationToken);
@@ -65,19 +65,37 @@ public class TaskService : ITaskService
         }
         catch (System.Exception ex)
         {
-            // Check error from repository
-            if (ex.Message.Contains("[#DBTASKERROR003]")) throw new Exception(ex.Message, ex);
-
-            throw new Exception("[#TASKERROR008] Failed to create task", ex);
+            throw new Exception("[#TASKERROR005] Failed to create task", ex);
         }
     }
-    public async Task<TaskResponse?> UpdateAsync(UpdateTaskItemRequest request, CancellationToken cancellationToken = default)
+    public async Task<TaskResponse?> UpdateAsync(UpdateTaskItemRequest request, Guid userId, CancellationToken cancellationToken = default)
     {
         try
         {
+            // Check if task exists
             var entity = await _repository.GetByIdAsync(request.Id, cancellationToken);
-            if (entity is null) throw new Exception("Task not found");
+            if (entity is null) throw new Exception("[#TASKERROR006] Task not found");
 
+            // Check if user logged exists
+            var user = await _userTaskRepository.GetByIdAsync(userId, cancellationToken);
+            if (user is null) throw new Exception("[#TASKERROR007] User logged not found");
+
+            // Check if user has permission to update the task
+            if (user.Id != entity.UserId && user.Role == RoleEnum.Member)
+            {
+                throw new Exception("[#TASKERROR008] You are not allowed to update this task");
+            }
+
+            // Check if title is required
+            if (string.IsNullOrEmpty(request.Title)) throw new Exception("[#TASKERROR009] Title is required");  
+            // Check if title is less than 200 characters
+            if (request.Title.Length > 200) throw new Exception("[#TASKERROR010] Title must be less than 200 characters");
+            // Check if description is required
+            if (string.IsNullOrEmpty(request.Description)) throw new Exception("[#TASKERROR011] Description is required");
+            // Check if task is already deleted or done
+            if (entity.Status == InfrastructureTaskStatus.Deleted || entity.Status == InfrastructureTaskStatus.Done) return MapToResponse(entity);
+            
+            // Update task
             entity.Title = request.Title.Trim();
             entity.Description = request.Description.Trim() ?? string.Empty;
             entity.Status = (InfrastructureTaskStatus)request.Status;
@@ -87,33 +105,42 @@ public class TaskService : ITaskService
         }
         catch (System.Exception ex)
         {
-            // Check error from repository
-            if (ex.Message.Contains("[#TASKERROR004]")) throw new Exception(ex.Message, ex);
-
-            throw new Exception("[#TASKERROR009] Failed to update task", ex);
+            throw new Exception("[#TASKERROR012] Failed to update task", ex);
         }
     }
-    public async Task<TaskResponse> DeleteAsync(Guid Id, CancellationToken cancellationToken = default)
+    public async Task<TaskResponse> DeleteAsync(DeleteTaskItemRequest request, Guid userId, CancellationToken cancellationToken = default)
     {
         try
         {
-            var entity = await _repository.GetByIdAsync(Id, cancellationToken) ?? throw new Exception("Task not found");
+            var entity = await _repository.GetByIdAsync(request.TaskId, cancellationToken);
+            if (entity is null) throw new Exception("[#TASKERROR013] Task not found");
 
-            await _repository.DeleteAsync(entity.Id, cancellationToken);
+            // Check if task is already deleted or done
+            if (entity.Status == InfrastructureTaskStatus.Done || entity.Status == InfrastructureTaskStatus.Deleted) return MapToResponse(entity);
+
+            // Check if user logged exists
+            var userLogged = await _userTaskRepository.GetByIdAsync(userId, cancellationToken);
+            if (userLogged is null) throw new Exception("[#TASKERROR014] User logged not found");
+
+            // Check if user has permission to update the task
+            if (userLogged.Id != entity.UserId && (userLogged.Role == RoleEnum.Member || userLogged.Role == RoleEnum.Manager))
+            {
+                throw new Exception("[#TASKERROR015] You are not allowed to update this task");
+            }
+
+            await _repository.DeleteAsync(entity, cancellationToken);
             return MapToResponse(entity);
         }
         catch (System.Exception ex)
         {
-            // Check error from repository
-            if (ex.Message.Contains("[#TASKERROR005]")) throw new Exception(ex.Message, ex);
-
-            throw new Exception("[#TASKERROR010] Failed to delete task", ex);
+            throw new Exception("[#TASKERROR016] Failed to delete task", ex);
         }
     }
     private static TaskResponse MapToResponse(TaskItem entity)
     {
         return new TaskResponse(
             entity.Id,
+            entity.UserId,
             entity.Title,
             entity.Description,
             entity.Status,

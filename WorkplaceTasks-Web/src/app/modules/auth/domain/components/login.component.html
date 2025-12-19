@@ -1,0 +1,35 @@
+<div class="login-container">
+    <div class="login-card">
+        <h1 class="login-title">Login</h1>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+            <div class="form-fields">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="seu@email.com" formControlName="email" required>
+                    <mat-icon matPrefix>email</mat-icon>
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">
+                        Email é obrigatório
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('email')">
+                        Email inválido
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Senha</mat-label>
+                    <input matInput type="password" placeholder="Digite sua senha" formControlName="password" required>
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <mat-error *ngIf="form.get('password')?.hasError('required')">
+                        Senha é obrigatória
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button color="primary" type="submit" class="login-button" [disabled]="form.invalid || isLoading">
+                <mat-spinner *ngIf="isLoading" diameter="20" class="button-spinner"></mat-spinner>
+                <span *ngIf="!isLoading">Entrar</span>
+                <span *ngIf="isLoading">Entrando...</span>
+            </button>
+        </form>
+    </div>
+</div>

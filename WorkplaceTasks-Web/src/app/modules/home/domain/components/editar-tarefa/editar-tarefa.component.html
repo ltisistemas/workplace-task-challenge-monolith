@@ -1,0 +1,54 @@
+<div class="dialog-container">
+    <h2 class="dialog-title">Editar Tarefa</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="dialog-form">
+        <div class="form-fields">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Título</mat-label>
+                <input matInput placeholder="Digite o título da tarefa" formControlName="title" required>
+                <mat-icon matPrefix>title</mat-icon>
+                <mat-error *ngIf="form.get('title')?.hasError('required')">
+                    Título é obrigatório
+                </mat-error>
+                <mat-error *ngIf="form.get('title')?.hasError('minlength')">
+                    Título deve ter no mínimo 3 caracteres
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput placeholder="Digite a descrição da tarefa" formControlName="description" rows="3"
+                    required></textarea>
+                <mat-icon matPrefix>description</mat-icon>
+                <mat-error *ngIf="form.get('description')?.hasError('required')">
+                    Descrição é obrigatória
+                </mat-error>
+                <mat-error *ngIf="form.get('description')?.hasError('minlength')">
+                    Descrição deve ter no mínimo 5 caracteres
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status" required>
+                    <mat-option *ngFor="let option of statusOptions" [value]="option.value">
+                        {{ option.label }}
+                    </mat-option>
+                </mat-select>
+                <mat-icon matPrefix>flag</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="dialog-actions">
+            <button mat-button type="button" (click)="onCancel()" class="cancel-button" [disabled]="isLoading">
+                Cancelar
+            </button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading" class="submit-button">
+                <mat-spinner *ngIf="isLoading" diameter="20" class="button-spinner"></mat-spinner>
+                <span *ngIf="!isLoading">Salvar</span>
+                <span *ngIf="isLoading">Salvando...</span>
+            </button>
+        </div>
+    </form>
+</div>
+

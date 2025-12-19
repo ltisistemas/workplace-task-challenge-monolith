@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkplaceTasks.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60b62aee66245a4c11986fb56a4af29209971b15")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9c83040933e4c455f7ea36a4240aade3398f557")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkplaceTasks.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkplaceTasks.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
